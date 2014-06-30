@@ -52,4 +52,6 @@ gem 'bootstrap-sass'
 
 gem 'faker'
 
+gem 'figaro'
+
 
