@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins
   devise_for :users
 
-  resources :lists
-  resources :posts
+  resources :lists do 
+    resources :posts, except: [:index]
+  end
 
   get 'welcome/index'
 
