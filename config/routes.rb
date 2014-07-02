@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :admins
   devise_for :users
+
+  resources :lists
+  resources :posts
+
   get 'welcome/index'
 
   get 'welcome/about'
