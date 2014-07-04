@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
-  get '/lists/index'
+  get 'lists/index'
 
     root to: 'welcome#index'
 end

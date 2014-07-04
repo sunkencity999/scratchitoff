@@ -82,6 +82,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #http://scratchitoff.herokuapp.com
-  config.action_mailer.default_url_options = {host: 'scratchitoff.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'scratchitoff.herokuapp.com'}
 
 end
