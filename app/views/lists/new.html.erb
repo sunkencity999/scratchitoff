@@ -1,2 +1,29 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+
+<h1>New List</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Making To-do Lists:</p>
+    <ul>
+      <li>Make your list a living one.</li>
+      <li>Make it memorable.</li>
+      <li>Check it often, and reward yourself for getting it done!.</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <%= form_for @list do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Enter list name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter list description" %>
+      </div>
+      <div class="form-group">
+       
+      </div>
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

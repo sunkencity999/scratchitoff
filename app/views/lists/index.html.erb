@@ -1,2 +1,23 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<h1>Your To-do Lists</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @lists.each do |list| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to list.name, list %>
+          </h4>
+          <small>
+            <%= list.description %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <% if policy(list.new).create? %>
+      <%= link_to "New List", new_list_path, class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

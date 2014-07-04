@@ -1,22 +1,29 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.all
-  end
+ 
 
   def new
+    @list = List.find(params[:list_id])
     @post = Post.new
+    authorize @post
   end
 
   def show
     @post = Post.find(params[:id])
+    @list = List.find(params[:list_id])
   end
 
   def edit
+    @list = List.find(params[:list_id])
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:tite, :body,))
+    @list = List.find(params[:list_id])
+    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+    @post.list = @list
+    authorize @post
+
 
     if @post.save
       redirect_to @post, notice: "Post was saved successfully."
@@ -27,9 +34,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    @list = List.find(params[:list_id])
     @post = Post.find(params[:id])
+    authorize @post
     
     if @post.update_attributes(params.require(:post).permit(:title, :body))
+      flash[:notice] = "Post has been updated."
       redirect_to @post
     else
       flash[:error] = "Error saving post. Please try again"

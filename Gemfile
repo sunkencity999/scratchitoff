@@ -54,6 +54,9 @@ gem 'faker'
 
 gem 'figaro'
 
+gem 'pundit'
+
+
 group :development, :test do 
   gem 'rspec-rails'
   gem 'capybara'

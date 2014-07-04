@@ -4,7 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-has_many :topics
+has_many :lists
 has_many :posts
+
+  def role?(base_role)
+    role == base_role.to_s
+  end
+  
 
 end
