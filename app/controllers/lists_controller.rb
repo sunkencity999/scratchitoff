@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
+
   def index
-    @lists = List.all
+    @lists = List.paginate(page: params[:page], per_page: 15)
     authorize @lists
   end
 
@@ -10,8 +11,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @lists = List.all
-    
+    @list = List.find(params[:id])
+    @posts = @list.posts.paginate(page: params[:page], per_page: 15)
+    authorize @list
   end
 
   def edit
