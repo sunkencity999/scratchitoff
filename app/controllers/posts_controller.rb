@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
 
     if @post.save
-      redirect_to @post, notice: "Post was saved successfully."
+      redirect_to @post.list, notice: "Post was saved successfully."
     else
       flash[:error] = "Error creating post. Please try again."
       render :new

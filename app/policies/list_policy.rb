@@ -5,11 +5,12 @@ class ListPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && user.role?(:user)
+    user.present? 
   end
 
   def update?
     create?
   end
+
 
 end
