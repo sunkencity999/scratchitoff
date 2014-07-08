@@ -40,10 +40,24 @@ class PostsController < ApplicationController
     
     if @post.update_attributes(params.require(:post).permit(:title, :body))
       flash[:notice] = "Post has been updated."
-      redirect_to @post
+      redirect_to @post.list
     else
       flash[:error] = "Error saving post. Please try again"
       render :edit
+    end
+  end
+  def destroy
+    @list = List.find(params[:topic_id])
+    @post = Post.find(params[:id])
+
+    title = @post.title
+    authorize @post
+    if @post.destroy
+      flash[:notice] = "\"#{title}\" was deleted successfully."
+      redirect_to @list
+    else
+      flash[:error] = "There was an error deleting the post."
+      render :show
     end
   end
 end

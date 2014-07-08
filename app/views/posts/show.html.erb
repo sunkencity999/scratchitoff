@@ -8,5 +8,9 @@
     <% if policy(@post).edit? %>
       <%= link_to "Edit", edit_list_post_path(@list, @post), class: 'btn btn-success' %>
     <% end %>
+    <% if policy(@post).destroy? %>
+      <%= link_to "Delete Post", [@list, @post], method: :delete, class: 'btn btn-danger', data: [ confirm: 'Are you sure you want to delete this post?'] %>
+    <% end %> 
+
   </div>
 </div>

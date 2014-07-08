@@ -12,5 +12,9 @@ class ListPolicy < ApplicationPolicy
     create?
   end
 
+  def destroy?
+    create?
+  end
+
 
 end
