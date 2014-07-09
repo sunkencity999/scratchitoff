@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  respond_to :html, :js
  
 
   def new
@@ -47,8 +46,9 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
-    @list = List.find(params[:topic_id])
+    @list = List.find(params[:list_id])
     @post = Post.find(params[:id])
 
     title = @post.title
