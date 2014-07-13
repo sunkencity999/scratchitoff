@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :posts, except: [:index]
   end
 
-  match 'lists/lists/posts/complete/' => 'posts#complete', :via => :put
+  match 'lists/lists/posts/complete/' => 'posts#complete', :via => :post
 
   get 'welcome/index'
 
