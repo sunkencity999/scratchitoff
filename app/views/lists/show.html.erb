@@ -19,7 +19,7 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-          <%= form_tag("lists/posts/complete/", :method => "post") do %>
+          <%= form_tag("lists/posts/complete/", :method => "put") do %>
             <ul style="list-style-type:none;">
             <% if post.completed == true %>
               <li style="color:grey;"> <%=check_box_tag "posts_checkbox[]", post.id %> <strike> <%= link_to post.title, [@list, post] %> </strike> </li>

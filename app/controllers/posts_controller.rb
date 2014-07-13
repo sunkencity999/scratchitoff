@@ -68,7 +68,7 @@ class PostsController < ApplicationController
         p = Post.find_by_id(post_id)
       p.update_attribute(:completed, true)
     end
-    redirect_to :back
+    redirect_to :back, alert: "Items marked 'Complete'!"
   end
 
 end
