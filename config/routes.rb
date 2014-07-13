@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   get '/lists/' => 'lists#index'
 
-    root to: 'welcome#index'
+    
 end
