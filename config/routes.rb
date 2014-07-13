@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  resources :users
   devise_for :users
+  
+  resources :users
   
   devise_scope :user do
     authenticated :user do
