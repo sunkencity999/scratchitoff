@@ -60,6 +60,7 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'whenever', :require => false
 
+
 group :development, :test do 
   gem 'rspec-rails'
   gem 'capybara'

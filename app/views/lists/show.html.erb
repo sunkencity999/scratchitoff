@@ -1,23 +1,34 @@
 
-<h1><%= @list.name %></h1>
+<h2><%= @list.name %></h2>
+</br>
 
 <% if policy(@list).update? %>
-  <%= link_to "Edit List", edit_list_path, class: 'btn btn-success' %>
+  <%= link_to "Edit List", edit_list_path, class: 'btn btn-success btn-sm' %>
 <% end %>
 
 <% if policy(@list).destroy? %>
-    <%= link_to "Delete List", @list, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this list?'} %>
+    <%= link_to "Delete List", @list, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure you want to delete this list?'} %>
     <% end %>
 
 <div class="row" align="justify">
   <div class="col-md-8">
+    </br>
     <p class="lead"><%= @list.description %></p>
     
     <% @posts.each do |post| %>
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to post.title, [@list, post] %>
+          <%= form_tag("lists/posts/complete/", :method => "post") do %>
+            <ul style="list-style-type:none;">
+            <% if post.completed == true %>
+              <li style="color:grey;"> <%=check_box_tag "posts_checkbox[]", post.id %> <strike> <%= link_to post.title, [@list, post] %> </strike> </li>
+            <% else %>  
+            <li><%= check_box_tag "posts_checkbox[]", post.id%><%= link_to post.title, [@list, post] %></li>
+            <% end %>
+             <%= submit_tag("Complete", class: 'btn btn-danger btn-xs' ) %>
+          <% end %>  
+            </ul>
           </h4>
         </div>
       </div>
@@ -28,7 +39,7 @@
   <div class="col-md-4">
   
     <% if policy(Post.new).create? %>
-      <%= link_to "New Post", new_list_post_path(@list), class: 'btn btn-success' %>
+      <%= link_to "New To-do", new_list_post_path(@list), class: 'btn btn-success btn-lg' %>
     <% end %>
     
   </div>

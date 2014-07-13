@@ -61,4 +61,14 @@ class PostsController < ApplicationController
       render :show
     end
   end
+
+  def complete
+    params[:posts_checkbox].each do |check|
+      post_id = check
+        p = Post.find_by_id(post_id)
+      p.update_attribute(:completed, true)
+    end
+    redirect_to :back
+  end
+
 end

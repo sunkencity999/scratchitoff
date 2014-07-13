@@ -31,4 +31,7 @@ every 1.day do
   runner "Post.old.destroy"
 end
 
+every 1.day do
+  runner "Post.completed.destroy"
+end
 
