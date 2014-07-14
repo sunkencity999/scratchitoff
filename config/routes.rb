@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :users
+
+  resource :user, only: [:edit] do 
+    collection do 
+      patch 'update_password'
+    end
+  end
+  
   
   devise_scope :user do
     authenticated :user do
