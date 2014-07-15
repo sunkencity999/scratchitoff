@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :restrict_user, :only => [:show, :view, :edit, :delete, :update]
 
   def new
     @list = List.find(params[:list_id])
@@ -70,4 +71,9 @@ class PostsController < ApplicationController
     redirect_to :back, alert: "Items marked 'Complete'!"
   end
 
+ private
+
+  def restrict_user
+   @post = current_user.posts.where(:id => params[:id].to_i)
+  end
 end

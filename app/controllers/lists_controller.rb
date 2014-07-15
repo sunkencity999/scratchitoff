@@ -1,8 +1,10 @@
 class ListsController < ApplicationController
+  before_filter :restrict_user, :only => [:show, :view, :edit, :delete, :update]
 
   def index
     @lists = List.paginate(page: params[:page], per_page: 15)
     authorize @lists
+
   end
 
   def new
@@ -57,4 +59,10 @@ class ListsController < ApplicationController
     end
   end
   
+  private
+
+  def restrict_user
+   @list = current_user.lists.where(:id => params[:id].to_i)
+  end
+
 end

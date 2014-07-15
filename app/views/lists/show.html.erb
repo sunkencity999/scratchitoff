@@ -19,12 +19,13 @@
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
+
           <%= form_tag("lists/posts/complete/", :method => "post") do %>
             <ul style="list-style-type:none;">
             <% if post.completed == true %>
-              <li style="color:grey;"> <%=check_box_tag "posts_checkbox[]", post.id %> <strike> <%= link_to post.title, [@list, post] %> </strike> </li>
+              <li style="color:grey;"> <%=check_box_tag "posts_checkbox[]", post.id %> <strike> <%= link_to post.title, [@list, post] %>  <i><%= distance_of_time_in_words(Time.now, (post.created_at + 7.days)) %> until to-do is deleted.</i></strike> </li>
             <% else %>  
-            <li><%= check_box_tag "posts_checkbox[]", post.id%><%= link_to post.title, [@list, post] %></li>
+            <li><%= check_box_tag "posts_checkbox[]", post.id%><%= link_to post.title, [@list, post] %> <i><%= distance_of_time_in_words(Time.now, (post.created_at + 7.days)) %> until to-do is deleted.</i></li>
             <% end %>
              <%= submit_tag("Complete", class: 'btn btn-danger btn-xs' ) %>
           <% end %>  
