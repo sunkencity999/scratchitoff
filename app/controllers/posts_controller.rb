@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  respond_to :json
+  
   before_filter :restrict_user, :only => [:show, :view, :edit, :delete, :update]
 
   def new
