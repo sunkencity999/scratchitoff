@@ -1,7 +1,7 @@
 class ListPolicy < ApplicationPolicy
 
   def index?
-    user.present? && current_user == user?
+    user.present?
   end
 
   def create?
