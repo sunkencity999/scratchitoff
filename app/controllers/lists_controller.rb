@@ -16,6 +16,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
+    render json: @list
   end
 
   def edit

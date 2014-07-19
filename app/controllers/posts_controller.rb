@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @list = List.find(params[:list_id])
+    render json: @post
   end
 
   def edit

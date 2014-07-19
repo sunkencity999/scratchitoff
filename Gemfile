@@ -60,6 +60,8 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'whenever', :require => false
 
+gem 'active_model_serializers'
+
 
 group :development, :test do 
   gem 'rspec-rails'
