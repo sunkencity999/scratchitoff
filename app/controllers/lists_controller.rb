@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   
 
   def index
-    @lists = List.paginate(page: params[:page], per_page: 15)
+    @lists = current_user.lists.paginate(page: params[:page], per_page: 15)
     authorize @lists
 
   end
@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
     
@@ -38,7 +38,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
       redirect_to @list
