@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+
   respond_to :json
   respond_to :html
   
@@ -15,7 +16,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = current_user.lists.find(params[:id])
+    @list = current_user.lists.find(params[:user_id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
     
@@ -38,7 +39,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = current_user.lists.find(params[:id])
+    @list = current_user.lists.find(params[:user_id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
       redirect_to @list
