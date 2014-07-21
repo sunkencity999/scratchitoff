@@ -72,6 +72,4 @@ class PostsController < ApplicationController
     end
     redirect_to :back, alert: "Items marked 'Complete'!"
   end
-
-  end
 end
