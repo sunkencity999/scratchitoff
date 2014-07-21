@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   respond_to :json
+  respond_to :html
   
 
   def index
@@ -60,8 +61,4 @@ class ListsController < ApplicationController
       render :show
     end
   end
-  
-  private
-
-
 end
