@@ -1,7 +1,6 @@
 class ListsController < ApplicationController
   respond_to :json
   
-  before_filter :restrict_user, :only => [:show, :view, :edit, :delete, :update]
 
   def index
     @lists = List.paginate(page: params[:page], per_page: 15)
@@ -18,7 +17,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
-    render json: @list
+    
   end
 
   def edit
@@ -64,8 +63,5 @@ class ListsController < ApplicationController
   
   private
 
-  def restrict_user
-   @list = current_user.lists.where(:id => params[:id].to_i)
-  end
 
 end

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
+  before_filter :authenticate_user!
   respond_to :json
-  
-  before_action :authenticate_user!
 
   def edit
     @user = current_user
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
  
   def show
     @user = User.find(params[:id])
-    render json: @user
+    
   end
 
   def update

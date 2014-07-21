@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   respond_to :json
   
-  before_filter :restrict_user, :only => [:show, :view, :edit, :delete, :update]
 
   def new
     @list = List.find(params[:list_id])
@@ -12,7 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @list = List.find(params[:list_id])
-    render json: @post
+    
   end
 
   def edit
@@ -74,9 +73,5 @@ class PostsController < ApplicationController
     redirect_to :back, alert: "Items marked 'Complete'!"
   end
 
- private
-
-  def restrict_user
-   @post = current_user.posts.where(:id => params[:id].to_i)
   end
 end
