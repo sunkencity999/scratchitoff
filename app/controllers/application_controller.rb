@@ -15,12 +15,14 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
+    #direct logged in users to welcome page
   welcome_index_path
 end
 
     protected
 
   def configure_permitted_parameters
+    #allows us to filter parameters using strong parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 end
