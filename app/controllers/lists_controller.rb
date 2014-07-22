@@ -4,8 +4,8 @@ class ListsController < ApplicationController
   
 
   def index
-    @lists = current_user.lists.find(params[:id])
-    authorize @list
+    @lists = current_user.lists
+   
   end
 
   def new
@@ -37,7 +37,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = current_user.lists.find(params[:id])
+    @list = current_user.lists.find(params[:user_id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
       redirect_to @list

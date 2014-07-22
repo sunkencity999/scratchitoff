@@ -27,6 +27,7 @@
             <% else %>  
             <li><%= check_box_tag "posts_checkbox[]", post.id%><%= link_to post.title, [@list, post] %> <i><%= distance_of_time_in_words(Time.now, (post.created_at + 7.days)) %> until to-do is deleted.</i></li>
             <% end %>
+              <%= hidden_field_tag "user_id", :user_id %>
              <%= submit_tag("Complete", class: 'btn btn-danger btn-xs' ) %>
           <% end %>  
             </ul>
