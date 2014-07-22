@@ -1,22 +1,20 @@
 class ListsController < ApplicationController
-
   respond_to :json
   respond_to :html
   
 
   def index
-    @lists = current_user.lists.paginate(page: params[:page], per_page: 15)
-    authorize @lists
-
+    @lists = current_user.lists.find(params[:id])
+    authorize @list
   end
 
   def new
     @list = List.new
-    authorize @list 
+    authorize @list
   end
 
   def show
-    @list = current_user.lists.find(params[:user_id])
+    @list = List.find(params[:id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
     
@@ -28,7 +26,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:name, :description, :public))
+    @list = current_user.lists.build(params.require(:list).permit(:name, :description, :public))
     authorize @list
     if @list.save
       redirect_to @list, notice: "List was saved successfully."
@@ -39,7 +37,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = current_user.lists.find(params[:user_id])
+    @list = current_user.lists.find(params[:id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
       redirect_to @list

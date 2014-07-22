@@ -13,7 +13,8 @@ users = User.all
 5.times do
   List.create(
     name: Faker::Lorem.sentence,
-    description: Faker::Lorem.paragraph
+    description: Faker::Lorem.paragraph,
+    user: users.sample
     )
 end
 lists = List.all
@@ -31,3 +32,4 @@ posts = Post.all
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
+puts "#{List.count} lists created"
