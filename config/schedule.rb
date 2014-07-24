@@ -28,11 +28,11 @@ end
 #delete posts that are older than 7 days
 
 every 1.day do 
-  runner "Post.old.destroy"
+  runner "Posts.old.destroy"
 end
 
 every 1.day do
-  runner "Post.completed.destroy"
+  runner "Posts.completed.destroy"
 end
 
 #send daily email of user to-do's (posts)
