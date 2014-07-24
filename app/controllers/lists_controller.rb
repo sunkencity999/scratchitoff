@@ -1,19 +1,23 @@
 class ListsController < ApplicationController
+  #allows controller to respond to both JSON and HTML
   respond_to :json
   respond_to :html
   
 
   def index
+    #this defines @lists as lists belonging to the logged-in "current" user
     @lists = current_user.lists
    
   end
 
   def new
+    #calls the .new method on List object, then authorizes the @list with pundit
     @list = List.new
     authorize @list
   end
 
   def show
+    #Find lists to show based on their :id. Posts are nested in lists and paginated.
     @list = List.find(params[:id])
     @posts = @list.posts.paginate(page: params[:page], per_page: 15)
     authorize @list
@@ -26,6 +30,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    #this allows us to create a list that is linked to the user that creates it, and then save it.
     @list = current_user.lists.build(params.require(:list).permit(:name, :description, :public))
     authorize @list
     if @list.save
@@ -37,6 +42,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    #Defines list objects as those belonging to current user, checks authorization, redirects as necessary
     @list = current_user.lists.find(params[:user_id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
@@ -48,6 +54,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    # defines list object with :id as paramater, then links the name using the .name method
     @list = List.find(params[:id])
     name = @list.name
 
