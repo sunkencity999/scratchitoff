@@ -1,0 +1,9 @@
+<h2>Hello <%= @user.name %></h2>
+ Your active to-do Items:
+ <ul>
+   <% @posts.each do |posts| %>
+     <li><%= @post.title %></li>
+   <% end %>
+ </ul>
+
+ -sincerely, Christopher

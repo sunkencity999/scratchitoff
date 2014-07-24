@@ -35,3 +35,8 @@ every 1.day do
   runner "Post.completed.destroy"
 end
 
+#send daily email of user to-do's (posts)
+
+every 1.day do
+  runner "DailyMailer.daily_email"
+end
