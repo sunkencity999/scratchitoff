@@ -25,14 +25,14 @@ desc "This task deletes posts that are older than 1 week"
 end
 
  
-namespace :notifications do 
-  
-  include daily_email
-desc "This task sends a daily email of a User's post items"
-  task :daily_mailer => :environment do
-    @users = User.all 
-    @users.daily_email
-  end 
-end
+#namespace :notifications do 
+  #Rake.application.rake_require "#{Rails.root}/app/mailers/daily_mailer.rb"
+  #include daily_email
+#desc "This task sends a daily email of a User's post items"
+  #task :daily_mailer => :environment do
+   # @users = User.all 
+    #@users.daily_email
+ # end 
+#end
 
 
