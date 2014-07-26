@@ -43,7 +43,7 @@ class ListsController < ApplicationController
 
   def update
     #Defines list objects as those belonging to current user, checks authorization, redirects as necessary
-    @list = current_user.lists.find(params[:user_id])
+    @list = List.find(params[:id])
     authorize @list
     if @list.update_attributes(params.require(:list).permit(:name, :description, :public))
       redirect_to @list
