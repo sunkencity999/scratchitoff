@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     # direct logged in users to welcome page
-  welcome_index_path
+  lists_path
 end
 
     protected
