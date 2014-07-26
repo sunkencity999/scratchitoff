@@ -1,5 +1,5 @@
 class DailyMailer < ActionMailer::Base
-  default from: "admin@scratchitoff.co"
+  default from: "christopher@scratchitoff.co"
 
   def daily_email
     @user= User.all
