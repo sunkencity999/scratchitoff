@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  before_filter :redirect_guests
+
   #allows controller to respond to both JSON and HTML
   respond_to :json
   respond_to :html
@@ -66,5 +68,11 @@ class ListsController < ApplicationController
       flash[:error] = "There was an error deleting the list."
       render :show
     end
+  end
+
+  def redirect_guests
+    if current_user.nil? == true
+    redirect_to new_user_session_path
+    end 
   end
 end
