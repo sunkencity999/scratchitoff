@@ -15,7 +15,7 @@
   <% end %>
   <%= form_group_tag(post.errors[:body]) do %>
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
+    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "**Optional** Enter extra details here" %>
   <% end %>
   <div class="form-group">
     <%= f.hidden_field :user_id %>
