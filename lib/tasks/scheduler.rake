@@ -5,7 +5,7 @@ namespace :deletion do
   task :delete_completed_posts  => :environment do
     Posts = Post.all 
     Posts.each do |post|
-      if :completed == true
+      if post.completed == true
       post.destroy
       end
     end
@@ -17,7 +17,7 @@ desc "This task deletes posts that are older than 1 week"
   task :delete_old_posts => :environment do
     Posts = Post.all 
     Posts.each do |post|
-      if :old == true
+      if post.old == true
       post.destroy
       end
     end
