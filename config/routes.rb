@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/show'
+  constraints subdomain: 'api' do
+    namespace :api, path: '/' do
+      resources :users
+      resources :lists
+      resources :posts
+    end
+  end
 
   devise_for :users
   

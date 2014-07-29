@@ -1,28 +1,26 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#ScratchItOff
 
-Things you may want to cover:
+This web application is a to-do list with self-destructing posts. Simple and straightforward, and themed with Bootstrap, giving it a mobile-friendly design. 
 
-* Ruby version
+This app requires the following Gems:
 
-* System dependencies
+*devise
+*bootstrap-sass
+*pundit
+*will-paginate
+*whenever
+*active-model-serializers
 
-* Configuration
+Testing with:
 
-* Database creation
+*factory-girl
+*capybara
+*r-spec
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This app allows for the creation of Lists, and To-do items within the list. To-do's are destroyed after a week (using rakefile), and to-do's marked "completed" are struck-through, and then deleted using rake as well. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
