@@ -35,7 +35,7 @@ end
       end
     end
   end
-end
+
 
 #namespace :notifications do 
   #Rake.application.rake_require "#{Rails.root}/app/mailers/posts_mailer.rb"
