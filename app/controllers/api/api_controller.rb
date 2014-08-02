@@ -1,8 +1,32 @@
 class ApiController < ActionController::Base
-  skip_before_action :verify_authenticity_token
-
+  
+  before_action :authenticate
   #necessary in all controllers that respond to JSON
   respond_to :json 
+
+
+  protected
+  #the following enables authentication based on user
+  #name and password
+    def authenticate
+      authenticate_basic_auth || render_unauthorized
+    end
+
+    def authenticate_basic_auth
+      authenticate_with_http_basic do |username, password|
+        User.authenticate(username, password)
+      end
+    end
+
+    def render_unauthorized
+      self.headers['WWW-Authenticate'] = 'Basic realm="Zombies"'
+      
+      respond_to do |format|
+        format.json { render json: 'Bad credentials', status: 401 }
+        format.xml { render xml: 'Bad credentials', status: 401 }
+      end
+   end
+
 
   private
 
