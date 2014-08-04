@@ -1,6 +1,17 @@
 <h2>Hello <%= @user.name %>,</h2>
 
-<div class="column" class="justify">
+<div class="col-md-10">
 </br>
-<h4> Thank you for using ScratchItOff. If you have suggestions to improve our application, or bugs to report, please send us a quick email <a href="mailto:christopher@scratchitoff.co"> here </a>.</h4>
+<p> Thank you for using ScratchItOff. If you have suggestions to improve our application, or bugs to report, please send us a quick email <a href="mailto:christopher@scratchitoff.co"> here </a>.</p>
+
+<p class="lead"> Users who would like to interact with this app through the API will need the following key:</p>
+<p class="lead">
+Authorization Token: <%= @user.auth_token %>
+<p>
+This is a personal key for accessing your information in our database.
+</p>
+<p>
+The Authorization Token is required to make curl requests to the application; we use token authorization to ensure data is only accessible to the correct user.  
+</p>
+
 </div>

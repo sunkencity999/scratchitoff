@@ -1,5 +1,6 @@
 module API
   class UsersController < ApiController
+    before_action :authenticate
 
     def index
       users = User.all

@@ -1,22 +1,22 @@
 class ApiController < ActionController::Base
-  
-  #before_action :authenticate
+  before_action :authenticate
   #necessary in all controllers that respond to JSON
   respond_to :json 
 
 
   protected
-  #the following enables authentication based on user
-  #name and password
-    def authenticate
-      authenticate_basic_auth || render_unauthorized
-    end
 
-    def authenticate_basic_auth
-      authenticate_with_http_basic do |username, password|
-        User.authenticate(username, password)
+    def authenticate
+      authenticate_token || render_unauthorized
+    end
+  
+  
+    def authenticate_token
+      authenticate_with_http_token do |token, options|
+        User.find_by(auth_token: token)
       end
     end
+    
 
     def render_unauthorized
       self.headers['WWW-Authenticate'] = 'Basic realm="Zombies"'

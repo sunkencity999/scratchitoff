@@ -1,5 +1,7 @@
 module API
   class ListsController < ApiController
+    before_action :authenticate
+
     def index
       lists = List.all
       render json: lists, status:200

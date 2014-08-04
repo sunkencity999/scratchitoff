@@ -1,6 +1,6 @@
 module API
   class PostsController < ApiController
-    
+    before_action :authenticate
 
     def index
       posts = Post.all
