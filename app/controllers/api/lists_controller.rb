@@ -1,12 +1,8 @@
 module API
-  class ListsController < ApplicationController
+  class ListsController < ApiController
     def index
       lists = List.all
       render json: lists, status:200
-
-      respond_to do |format|
-        format.json { render json: lists, status: 200}
-      end
     end
 
     def show

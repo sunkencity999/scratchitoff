@@ -1,6 +1,6 @@
 class ApiController < ActionController::Base
   
-  before_action :authenticate
+  #before_action :authenticate
   #necessary in all controllers that respond to JSON
   respond_to :json 
 

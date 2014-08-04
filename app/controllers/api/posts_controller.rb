@@ -1,12 +1,10 @@
 module API
-  class PostsController < ApplicationController
+  class PostsController < ApiController
+    
+
     def index
       posts = Post.all
       render json: posts, status:200
-
-      respond_to do |format|
-        format.json { render json: posts, status: 200}
-      end
     end
 
     def show
