@@ -4,7 +4,7 @@ class PostsMailer < ActionMailer::Base
   def daily_email(user)
     @user= user
     @posts = user.posts
-    @url = "http://scratchitoff.herokuapp.com/lists"
+    @url = "http://scratchitoff.co/lists"
     mail(to:@user.email, subject: 'Your active to-do items')
   end
 
