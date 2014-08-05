@@ -30,7 +30,7 @@ end
   desc " Daily posts email to users"
     task :daily_post_email => :environment do 
       users = User.all   
-      user.each do |user|
+      users.each do |user|
         PostsMailer.daily_email(user)
       end
     end
