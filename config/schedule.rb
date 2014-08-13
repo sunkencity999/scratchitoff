@@ -38,5 +38,5 @@ end
 #send daily email of user to-do's (posts)
 
 every 1.day do
-  runner "DailyMailer.daily_email"
+  runner "PostsMailer.daily_email(user)"
 end
