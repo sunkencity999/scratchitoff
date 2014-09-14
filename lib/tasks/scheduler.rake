@@ -17,7 +17,7 @@ desc "This task deletes posts that are older than 1 week"
   task :delete_old_posts => :environment do
     posts = Post.all 
     posts.each do |post|
-      if post.old == true
+      if post.old?
       post.destroy
       end
     end
