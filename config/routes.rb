@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   constraints subdomain: 'api' do
     namespace :api, path: '/' do
       resources :users
@@ -10,7 +12,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :users
+  #this is the route for the calendar, so it is related to users. 
+  resources :users do
+    resource :calendar, only: [:show], controller: :calendar
+      root to: "calendar#show"
+  end
 
   resource :user, only: [:edit] do 
     collection do 
@@ -39,6 +45,8 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   get '/lists/' => 'lists#index'
+
+  get 'calendar/show'
 
     
 end
