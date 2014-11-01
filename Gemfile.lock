@@ -67,6 +67,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    groupdate (2.3.0)
+      activesupport (>= 3)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.1.1)
@@ -184,6 +186,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   figaro
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   pg

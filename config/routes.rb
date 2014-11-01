@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   constraints subdomain: 'api' do
     namespace :api, path: '/' do
       resources :users
@@ -15,8 +14,12 @@ Rails.application.routes.draw do
   #this is the route for the calendar, so it is related to users. 
   resources :users do
     resource :calendar, only: [:show], controller: :calendar
+    resource :event, controller: :event 
       root to: "calendar#show"
   end
+
+ 
+ 
 
   resource :user, only: [:edit] do 
     collection do 

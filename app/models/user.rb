@@ -8,6 +8,7 @@ before_create :set_auth_token #implement authorization by token
 
 has_many :lists, dependent: :destroy
 has_many :posts, dependent: :destroy
+has_many :events, dependent: :destroy
 
   def role?(base_role)
     role == base_role.to_s

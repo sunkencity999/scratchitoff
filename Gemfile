@@ -61,6 +61,8 @@ gem 'whenever', :require => false
 
 gem 'active_model_serializers'
 
+gem 'groupdate'
+
 
 group :development, :test do 
   gem 'rspec-rails'

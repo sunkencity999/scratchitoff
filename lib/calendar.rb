@@ -1,4 +1,7 @@
+
 class Calendar < Struct.new(:view, :date, :callback)
+    #this class creates the structure for a monthly calendar.
+
     HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :sunday
  
