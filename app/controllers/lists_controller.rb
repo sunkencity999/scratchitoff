@@ -9,6 +9,13 @@ class ListsController < ApplicationController
   def index
     #this defines @lists as lists belonging to the logged-in "current" user
     @lists = current_user.lists
+
+    # the following code allows us to serve lists in json, html and atom for rss feeds.
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+      format.atom
+    end
    
   end
 
