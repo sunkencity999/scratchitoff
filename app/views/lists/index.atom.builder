@@ -5,7 +5,7 @@ atom_feed do |feed|
   for @post.each in @list.each do |list|
     feed.entry(list) 
     list.title
-    list.body, :type => 'html'
+    list.body
   end
 end
 
