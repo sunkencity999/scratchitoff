@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       root to: "calendar#show"
   end
 
- 
+  
  
 
   resource :user, only: [:edit] do 
