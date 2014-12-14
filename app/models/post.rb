@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   #this scope used to associate ":old" with Post, and enable rake automation
   #in config/schedule.rb and destroy old posts after a week's time. 
   
-  scope :old, -> { where(["created_at > ?", 7.days.ago]) }
+  scope :old, -> { where(["created_at >= ?", 7.days.ago]) }
 
 
     validates :title, length: { minimum: 1}, presence: true
