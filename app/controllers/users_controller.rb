@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     #this is the method for deleting a user account.
-    User.find(current_user.id).destroy
+    User.find(params[:id]).destroy
     flash[:success] = "User deleted"
   end
 
