@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if @user.find(params[:id])
       @user.destroy
       respond_to do |format|
-        format.html {redirect_to welcome_index_path}
+        format.html {redirect_to 'welcome#index'}
         format.xml { head :ok}
       end
     end
