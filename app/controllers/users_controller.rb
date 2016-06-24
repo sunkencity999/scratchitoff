@@ -38,13 +38,9 @@ class UsersController < ApplicationController
 
   def destroy
     #this is the method for deleting a user account.
-    if @user.find(params[:id])
-      @user.destroy
-      respond_to do |format|
-        format.html {redirect_to 'welcome#index'}
-        format.xml { head :ok}
-      end
-    end
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to root_path
   end
 
    private
