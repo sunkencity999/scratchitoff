@@ -21,12 +21,12 @@ Rails.application.routes.draw do
 
 
 
-  resource :user, only: [:edit] do
-    collection do
-      patch 'update_password'
-    
-    end
-  end
+  #resource :user, only: [:edit] do
+  #  collection do
+  #    patch 'update_password'
+
+  #  end
+#  end
 
 
   devise_scope :user do
