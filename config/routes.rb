@@ -10,24 +10,25 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  
-  #this is the route for the calendar, so it is related to users. 
+
+  #this is the route for the calendar, so it is related to users.
   resources :users do
     resource :calendar, only: [:show], controller: :calendar
-    resource :event, controller: :event 
+    resource :event, controller: :event
       root to: "calendar#show"
   end
 
-  
- 
 
-  resource :user, only: [:edit] do 
-    collection do 
+
+
+  resource :user, only: [:edit] do
+    collection do
       patch 'update_password'
+      patch 'destroy'
     end
   end
-  
-  
+
+
   devise_scope :user do
     authenticated :user do
       root :to => 'lists#index'
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :lists do 
+  resources :lists do
     resources :posts, except: [:index]
   end
 
@@ -51,5 +52,5 @@ Rails.application.routes.draw do
 
   get 'calendar/show'
 
-    
+
 end
